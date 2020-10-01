@@ -51,10 +51,10 @@ RUN apt-get update -q && \
       wget pwgen at libvirt-bin && \
     apt-get update -q -y
 
-# Tweak my.cnf
-RUN sed -i -e 's#\(bind-address.*=\).*#\1 127.0.0.1#g' /etc/mysql/my.cnf && \
-    sed -i -e 's#\(log_error.*=\).*#\1 /config/databases/mysql_safe.log#g' /etc/mysql/my.cnf && \
-    sed -i -e 's/\(user.*=\).*/\1 nobody/g' /etc/mysql/my.cnf && \
+# Tweak MariaDB configuration
+RUN sed -i -e 's#\(bind-address.*=\).*#\1 127.0.0.1#g' /etc/mysql/mariadb.conf.d/50-server.cnf && \
+    sed -i -e 's#\(log_error.*=\).*#\1 /config/databases/mysql_safe.log#g' /etc/mysql/mariadb.conf.d/50-server.cnf && \
+    sed -i -e 's/\(user.*=\).*/\1 nobody/g' /etc/mysql/mariadb.conf.d/50-server.cnf && \
     echo '[mysqld]' > /etc/mysql/conf.d/innodb_file_per_table.cnf && \
     echo 'innodb_file_per_table' >> /etc/mysql/conf.d/innodb_file_per_table.cnf
 
