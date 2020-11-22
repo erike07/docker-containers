@@ -34,15 +34,17 @@ docker pull uberchuckie/observium
 Running
 ===
 
+The container will run as user:group 99:100. Make sure the user exists.
+
 Create your Observium config directory (which will contain both the properties file and the database) and then directories for the logs and RRDs and then launch with the following:
 
 ```
-docker run -d -v /your-config-location:/config -v /path-to-logs:/opt/observium/logs -v /path-to-rrds:/opt/observium/rrd -p 8668:8668 zuhkov/observium
+docker run -d -v /your-config-location:/config -v /path-to-logs:/opt/observium/logs -v /path-to-rrds:/opt/observium/rrd -p 8668:8668 uberchuckie/observium
 ```
 To set the timezone for Observium, pass in a valid value as an environment variable:
 
 ```
-docker run -d -v /your-config-location:/config -v /path-to-logs:/opt/observium/logs -v /path-to-rrds:/opt/observium/rrd -e TZ="America/Chicago" -p 8668:8668 zuhkov/observium
+docker run -d -v /your-config-location:/config -v /path-to-logs:/opt/observium/logs -v /path-to-rrds:/opt/observium/rrd -e TZ="America/Chicago" -p 8668:8668 uberchuckie/observium
 ```
 If you do not specify a timezone, the timezone will be set to UTC.
 
