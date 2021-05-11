@@ -2,7 +2,7 @@
 # sure you lock down to a specific version, not to `latest`!
 # See https://github.com/phusion/baseimage-docker/blob/master/Changelog.md for
 # a list of version numbers.
-FROM phusion/baseimage:bionic-1.0.0
+FROM phusion/baseimage:focal-1.0.0-amd64
 MAINTAINER uberchuckie <uberchuckie@gmail.com>
 
 # Set correct environment variables.
@@ -44,11 +44,12 @@ RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 0xf1656f24c74cd
 
 # Install Observium prereqs
 RUN apt-get update -q && \
+    apt-get upgrade -y -q && \
     apt-get install -y --no-install-recommends mariadb-server mariadb-client \
-      libapache2-mod-php7.2 php7.2-cli php7.2-mysql php7.2-mysqli php7.2-gd php7.2-json \
-      php-pear snmp fping python-mysqldb rrdtool subversion whois mtr-tiny at \
-      nmap ipmitool graphviz imagemagick apache2 \
-      wget pwgen at libvirt-bin && \
+      libapache2-mod-php7.4 php7.4-cli php7.4-mysql php7.4-mysqli php7.4-gd php7.4-json \
+      php-pear snmp fping python3-mysqldb rrdtool subversion whois mtr-tiny at \
+      nmap ipmitool graphviz imagemagick apache2 python3-pymysql python-is-python3 \
+      wget pwgen at libvirt-clients libvirt-daemon-system && \
     apt-get update -q -y
 
 # Tweak MariaDB configuration
