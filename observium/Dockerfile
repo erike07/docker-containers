@@ -108,6 +108,9 @@ RUN rm /etc/apache2/sites-available/default-ssl.conf && \
 COPY cron-observium /etc/cron.d/observium
 RUN chmod 744 /etc/cron.d/observium
 
+# syslog config
+COPY observium.conf /etc/syslog-ng/conf.d/observium.conf
+
 EXPOSE 514/udp
 EXPOSE 8668/tcp
 
