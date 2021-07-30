@@ -70,8 +70,7 @@ COPY patches/update/184.sql /opt/observium/update
 RUN chown nobody:users /opt/observium/update/184.sql && \
     chmod 755 /opt/observium/update/184.sql
 
-RUN phpenmod mcrypt && \
-    a2enmod rewrite
+RUN a2enmod rewrite
 
 RUN mkdir /etc/service/apache2
 COPY apache2.sh /etc/service/apache2/run
