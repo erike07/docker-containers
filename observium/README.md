@@ -50,8 +50,6 @@ If you do not specify a timezone, the timezone will be set to UTC.
 
 Browse to ```http://your-host-ip:8668``` and login with user and password `observium`
 
-To support syslog ingestion forward port 514 into docker (`-p 514:514/udp`).
-
 ---
 Credits
 ===
