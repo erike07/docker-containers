@@ -86,7 +86,8 @@ RUN chmod +x /etc/my_init.d/firstrun.sh && \
     chmod 755 -R /config && \
     chown -R nobody:users /var/log/mysql* && \
     chown -R nobody:users /var/lib/mysql && \
-    chown -R nobody:users /etc/mysql
+    chown -R nobody:users /etc/mysql && \
+    chmod u+s /usr/bin/fping
 
 # Configure apache2 to serve Observium app
 COPY apache2.conf /etc/apache2/apache2.conf
