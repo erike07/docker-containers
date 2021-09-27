@@ -17,6 +17,9 @@ else
   sed -i -e 's/USERNAME/observium/g' /config/config.php
 fi
 
+# if syslog config line is not already in config.php then add it
+grep -qxF 'enable_syslog' /config/config.php || echo "\$config['enable_syslog'] = 1;" >> /config/config.php
+
 ln -s /config/config.php /opt/observium/config.php
 chown nobody:users -R /opt/observium
 chmod 755 -R /opt/observium
