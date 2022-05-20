@@ -38,9 +38,7 @@ RUN locale-gen ru_RU.UTF-8
 RUN locale-gen sl_SI.UTF-8
 RUN locale-gen uk_UA.UTF-8
 
-RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 0xf1656f24c74cd1d8 && \
-    echo "deb http://mariadb.mirror.iweb.com/repo/10.5/ubuntu `lsb_release -cs` main" \
-    > /etc/apt/sources.list.d/mariadb.list
+RUN curl -sS https://downloads.mariadb.com/MariaDB/mariadb_repo_setup | bash -s -- --mariadb-server-version=mariadb-10.7 --skip-maxscale
 
 # Install Observium prereqs
 RUN apt-get update -q && \
@@ -54,8 +52,8 @@ RUN apt-get update -q && \
 
 # Tweak MariaDB configuration
 RUN sed -i -e 's#\(bind-address.*=\).*#\1 127.0.0.1#g' /etc/mysql/mariadb.conf.d/50-server.cnf && \
-    sed -i -e 's#\(log_error.*=\).*#\1 /config/databases/mysql_safe.log#g' /etc/mysql/mariadb.conf.d/50-server.cnf && \
-    sed -i -e 's/\(user.*=\).*/\1 nobody/g' /etc/mysql/mariadb.conf.d/50-server.cnf && \
+    sed -i -e 's#\#\(log_error.*=\).*#\1 /config/databases/mysql_safe.log#g' /etc/mysql/mariadb.conf.d/50-server.cnf && \
+    sed -i -e 's/#\(user.*=\).*/\1 nobody/g' /etc/mysql/mariadb.conf.d/50-server.cnf && \
     echo '[mysqld]' > /etc/mysql/conf.d/innodb_file_per_table.cnf && \
     echo 'innodb_file_per_table' >> /etc/mysql/conf.d/innodb_file_per_table.cnf
 
