@@ -2,7 +2,7 @@
 # sure you lock down to a specific version, not to `latest`!
 # See https://github.com/phusion/baseimage-docker/blob/master/Changelog.md for
 # a list of version numbers.
-FROM phusion/baseimage:focal-1.0.0-amd64
+FROM phusion/baseimage:focal-1.2.0
 MAINTAINER uberchuckie <uberchuckie@gmail.com>
 
 # Set correct environment variables.
