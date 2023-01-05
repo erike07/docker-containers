@@ -38,7 +38,7 @@ RUN locale-gen ru_RU.UTF-8
 RUN locale-gen sl_SI.UTF-8
 RUN locale-gen uk_UA.UTF-8
 
-RUN curl -sS https://downloads.mariadb.com/MariaDB/mariadb_repo_setup | bash -s -- --mariadb-server-version=mariadb-10.7 --skip-maxscale
+RUN curl -sS https://downloads.mariadb.com/MariaDB/mariadb_repo_setup | bash -s -- --mariadb-server-version=mariadb-10.10 --skip-maxscale
 
 # Install Observium prereqs
 RUN apt-get update -q && \
