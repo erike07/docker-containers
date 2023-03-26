@@ -2,7 +2,7 @@
 # sure you lock down to a specific version, not to `latest`!
 # See https://github.com/phusion/baseimage-docker/blob/master/Changelog.md for
 # a list of version numbers.
-FROM phusion/baseimage:focal-1.2.0
+FROM phusion/baseimage:jammy-1.0.1
 MAINTAINER uberchuckie <uberchuckie@gmail.com>
 
 # Set correct environment variables.
@@ -38,16 +38,16 @@ RUN locale-gen ru_RU.UTF-8
 RUN locale-gen sl_SI.UTF-8
 RUN locale-gen uk_UA.UTF-8
 
-RUN curl -sS https://downloads.mariadb.com/MariaDB/mariadb_repo_setup | bash -s -- --mariadb-server-version=mariadb-10.10 --skip-maxscale
+RUN curl -sS https://downloads.mariadb.com/MariaDB/mariadb_repo_setup | bash -s -- --mariadb-server-version=mariadb-10.11 --skip-maxscale
 
 # Install Observium prereqs
 RUN apt-get update -q && \
     apt-get upgrade -y -q && \
     apt-get install -y --no-install-recommends mariadb-server mariadb-client \
-      libapache2-mod-php7.4 php7.4-cli php7.4-mysql php7.4-mysqli php7.4-gd php7.4-json \
-      php-pear snmp fping python3-mysqldb rrdtool subversion whois mtr-tiny at \
-      nmap ipmitool graphviz imagemagick apache2 python3-pymysql python-is-python3 \
-      wget pwgen at libvirt-clients libvirt-daemon-system && \
+      libapache2-mod-php8.1 php8.1-cli php8.1-mysql php8.1-gd php8.1-bcmath php8.1-mbstring \
+      php8.1-opcache php8.1-curl php-apcu php-pear snmp fping rrdtool subversion \
+      whois mtr-tiny ipmitool graphviz imagemagick apache2 python3-mysqldb python3-pymysql python-is-python3 \
+      nmap wget pwgen at libvirt-clients libvirt-daemon-system && \
     apt-get update -q -y
 
 # Tweak MariaDB configuration
