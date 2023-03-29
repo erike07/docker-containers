@@ -33,3 +33,7 @@ else
   sed -i "s#\;date\.timezone\ \=#date\.timezone\ \=\ UTC#g" /etc/php/8.1/cli/php.ini
   sed -i "s#\;date\.timezone\ \=#date\.timezone\ \=\ UTC#g" /etc/php/8.1/apache2/php.ini
 fi
+
+# Workaround graph times not using system/php/database TZ or TZ environment
+rm /etc/localtime
+ln -s /usr/share/zoneinfo/$(cat /etc/container_environment/TZ) /etc/localtime
