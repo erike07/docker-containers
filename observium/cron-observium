@@ -2,6 +2,6 @@
 */5 *     * * *   root    /opt/observium/discovery.php -h new >> /dev/null 2>&1
 */5 *     * * *   root    /opt/observium/poller-wrapper.py >> /dev/null 2>&1
 # Run housekeeping script daily for syslog, eventlog and alert log
-13 5 * * * root /opt/observium/housekeeping.php -sel >> /dev/null 2>&1
+13 5 * * * root /opt/observium/housekeeping.php -sely >> /dev/null 2>&1
 # Run housekeeping script daily for rrds, ports, orphaned entries in the database and performance data
-47 4 * * * root /opt/observium/housekeeping.php -rptb >> /dev/null 2>&1
+47 4 * * * root /opt/observium/housekeeping.php -rptby >> /dev/null 2>&1
