@@ -27,7 +27,7 @@ else
   mysql -uroot -e "FLUSH PRIVILEGES"
   cd /opt/observium
   echo "Running Observium's discovery script."
-  ./discovery.php -d -u
+  ./discovery.php -u
   echo "Adding the 'observium' user to the app."
   php adduser.php observium observium 10
   echo "Shutting down."
