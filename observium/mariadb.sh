@@ -1,5 +1,5 @@
 #!/bin/bash
-start_mysql(){
+start_mariadb(){
     /usr/bin/mariadbd-safe --datadir=/config/databases > /dev/null 2>&1 &
     RET=1
     while [[ RET -ne 0 ]]; do
@@ -16,7 +16,7 @@ else
   echo "Initializing Data Directory."
   /usr/bin/mariadb-install-db --datadir=/config/databases >/dev/null 2>&1
   echo "Installation complete."
-  start_mysql
+  start_mariadb
   echo "Creating database."
   mariadb -uroot -e "CREATE DATABASE IF NOT EXISTS observium DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;"
   PW=$(cat /config/config.php | grep -m 1 "'db_pass'" | sed -r 's/.*(.{34})/\1/;s/.{2}$//')
