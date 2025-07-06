@@ -2,7 +2,7 @@
 # sure you lock down to a specific version, not to `latest`!
 # See https://github.com/phusion/baseimage-docker/blob/master/Changelog.md for
 # a list of version numbers.
-FROM phusion/baseimage:jammy-1.0.1
+FROM phusion/baseimage:noble-1.0.2
 LABEL org.opencontainers.image.authors="uberchuckie@gmail.com"
 
 # Set correct environment variables.
@@ -44,8 +44,8 @@ RUN curl -LsS https://r.mariadb.com/downloads/mariadb_repo_setup | bash -s -- --
 RUN apt-get update -q && \
     apt-get upgrade -y -q && \
     apt-get install -y --no-install-recommends mariadb-server mariadb-client \
-      libapache2-mod-php8.1 php8.1-cli php8.1-mysql php8.1-gd php8.1-bcmath php8.1-mbstring \
-      php8.1-opcache php8.1-curl php-apcu php-pear snmp fping rrdtool subversion \
+      libapache2-mod-php8.3 php8.3-cli php8.3-mysql php8.3-gd php8.3-bcmath php8.3-mbstring \
+      php8.3-opcache php8.3-curl php-apcu php-pear snmp fping rrdtool subversion \
       whois mtr-tiny ipmitool graphviz imagemagick apache2 python3-mysqldb python3-pymysql python-is-python3 \
       nmap wget pwgen at libvirt-clients libvirt-daemon-system && \
     apt-get update -q -y
