@@ -9,7 +9,6 @@ services:
     ports:
       - "8668:8668"
     volumes:
-      - /your-config-location:/config
+      - /home/observium:/config
       - /path-to-logs:/opt/observium/logs
       - /path-to-rrds:/opt/observium/rrd
-    detach: true
