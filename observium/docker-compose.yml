@@ -1,0 +1,15 @@
+
+services:
+  observium:
+    image: uberchuckie/observium
+    container_name: observium
+    restart: unless-stopped
+    environment:
+      - TZ=America/Cuiaba
+    ports:
+      - "8668:8668"
+    volumes:
+      - /your-config-location:/config
+      - /path-to-logs:/opt/observium/logs
+      - /path-to-rrds:/opt/observium/rrd
+    detach: true
