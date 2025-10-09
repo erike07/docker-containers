@@ -12,3 +12,5 @@ services:
       - /home/observium:/config
       - /path-to-logs:/opt/observium/logs
       - /path-to-rrds:/opt/observium/rrd
+  networks:
+      - dokploy-network
